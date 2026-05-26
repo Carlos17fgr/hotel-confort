@@ -1,0 +1,341 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    z-index: 9999;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 10px 5%;
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.header-contenido {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem; 
+    width: 100%;
+    max-width: 1200px; /* Evita que en pantallas 4K se separen demasiado */
+}
+
+.fecha-header, .estrellas-header {
+    font-size: 1.2rem;
+    color: rgb(0, 0, 0);
+    letter-spacing: 5px; /* Para que los números se vean separados como en la foto */
+    font-weight: 300;
+}
+
+.abrir-lista {
+    position: absolute;
+    top: 50px;
+    right: 5%;
+    transform: translateY(-50%);
+    background: none;
+    cursor: pointer;
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    max-width: 10rem;
+    align-items: center;
+    justify-content: center;
+    width: clamp(80px, 15vw, 150px);
+}
+
+
+nav{
+    display: flex;
+}
+
+
+
+.nav-lista {
+    list-style-type: none; 
+    display: flex;
+    gap: 1rem;
+    
+}
+
+button {
+    display: none;
+    color: rgb(0, 0, 0);
+    background: none;
+    border: none;
+    font-size: 25px;
+    padding: 5px;
+    cursor: pointer;
+    
+}
+
+
+.nav-lista li a {
+    text-decoration: none;
+    color: black;   
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-lista li a:hover {
+    color: transparent;
+}
+
+.nav-lista li a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    display: block; 
+    width: 30px;  /* Ajusta el ancho que quieras para tu icono */
+    height: 30px; /* Ajusta el alto */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    transform: translate(-50%, -50%) scale(0) ;
+    transition: all 0.3s ease;
+    opacity: 0;
+    color: white;
+    font-size: 1.5rem;
+} 
+
+.nav-lista li a:hover::after{
+    transform: translate(-50%, -50%) scale(1) ;
+    opacity: 1;
+}
+
+.nav-lista li:nth-child(1) a:hover::after { background-image: url(img/iconos/1.png); }
+
+.nav-lista li:nth-child(2) a:hover::after { background-image: url(img/iconos/2.png); }
+
+.nav-lista li:nth-child(3) a:hover::after { background-image: url(img/iconos/3.png); }
+
+.nav-lista li:nth-child(4) a:hover::after { background-image: url(img/iconos/4.png); }
+
+.nav-lista li:nth-child(5) a:hover::after { background-image: url(img/iconos/5.png); }
+
+.nav-lista li:nth-child(6) a:hover::after { background-image: url(img/iconos/6.png); }
+
+.nav-lista li:nth-child(7) a:hover::after { background-image: url(img/iconos/7.png); }
+
+.abrir-lista,
+.cerrar-lista {
+    display: none;
+}
+
+.fecha-header,
+.estrellas-header {
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-block;
+
+}
+
+.fecha-header:hover,
+.estrellas-header:hover {
+    transform: scale(1.2);
+    color: rgb(53, 53, 53);
+    text-shadow: 0 0 15px rgb(121, 1, 1);
+}
+
+.fecha-header, .estrellas-header {
+    font-size: clamp(0.7rem, 2vw, 1.1rem);
+    white-space: nowrap; 
+}
+
+.cerrar-lista{
+    background: none;
+}
+
+.hotel-hero {
+    width: 100%;
+    min-height: 100vh;
+    /* REEMPLAZA 'fondo-hotel.jpg' POR EL NOMBRE DE TU IMAGEN */
+    background: url('img/1.png') no-repeat center center/cover;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Capa oscura para que el texto se lea mejor */
+.overlay {
+    width: 100%;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.2); /* Oscurece un pelín el fondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.main-container {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap; /* Para que en celular se pongan uno abajo del otro */
+    justify-content: center;
+    width: 100%;
+    max-width: 1100px;
+}
+
+/* Estilo Glassmorphism (Efecto Vidrio) */
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 30px;
+    color: white;
+    flex: 1;
+    min-width: 320px;
+    max-width: 450px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos de los elementos internos */
+h3 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.comment {
+    margin-bottom: 20px;
+    border-left: 3px solid #d4af37; /* Detalle dorado */
+    padding-left: 15px;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    color: white;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-reserve {
+    width: 100%;
+    padding: 15px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-reserve:hover {
+    background-color: #d4af37;
+    color: white;
+}
+
+@media screen and (max-width:  550px ) {
+    .abrir-lista,
+    .cerrar-lista {
+        display: block;
+        background: none;
+    }
+
+    button {
+        display: block;
+        
+    }
+
+    .hamburguesa {
+        /* Aseguramos flex, pero esto debe estar ya en tu base */
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        gap: 1rem;
+    
+        position: fixed; 
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgb(111, 109, 109, 0);
+        padding: 2rem;
+
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+    }
+
+    body .hamburguesa.visible,
+    #nav.hamburguesa.visible {
+        box-shadow: 0 0 50px 100vmax rgba(0, 0, 0, .7);
+        backdrop-filter: blur(10px);
+        transform: translateX(0) !important; /* Forzamos la entrada */
+    }
+    
+
+    .nav-lista {
+        flex-direction: column;
+        align-items: end;
+    }
+
+    
+
+    .cerrar-lista {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+
+    }
+
+    .cerrar-lista:active {
+        transform: scale(0.8) rotate(90deg);
+    }
+
+    .header-contenido {
+        justify-content: center;
+    }
+
+    .fecha-header, .estrellas-header {
+        display: none;
+    }
+   
+    .abrir-lista {
+        right: 3%;
+        font-size: 2rem;
+        top: 50%;
+        transform: translateY(-50%);
+
+    
+    }
+
+    header {
+        height: 70px;
+        display: flex;
+        align-items: center;
+    }
+
+}
